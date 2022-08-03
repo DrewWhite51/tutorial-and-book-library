@@ -54,3 +54,4 @@ class TestDeveloper(unittest.TestCase):
         self.assertEqual(self.dev2.give_raise(), 180_000)
 
 
+
