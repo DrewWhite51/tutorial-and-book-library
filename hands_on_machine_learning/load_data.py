@@ -1,6 +1,8 @@
 import os
 import tarfile
 from six.moves import urllib
+import pandas as pd
+import matplotlib.pyplot as plt
 
 DOWNLOAD_ROOT = "https://raw.githubusercontent.com/ageron/handson-ml2/master/"
 HOUSING_PATH = os.path.join("datasets", "housing")
@@ -17,4 +19,20 @@ def fetch_housing_data(housing_url=HOUSING_URL, housing_path=HOUSING_PATH):
         housing_tgz.close()
 
 
-fetch_housing_data(HOUSING_URL, HOUSING_PATH)
+def data_info(housing_path=HOUSING_PATH):
+    csv_path = os.path.join(housing_path, "housing.csv")
+    return pd.read_csv(csv_path).info()
+
+
+def describe_data(housing_path=HOUSING_PATH):
+    csv_path = os.path.join(housing_path, "housing.csv")
+    return pd.read_csv(csv_path).describe()
+
+def graph_data(housing_path):
+    csv_path = os.path.join(housing_path, "housing.csv")
+    pd.read_csv(csv_path).hist(bins=50, figsize=(20,15))
+    plt.show()
+
+
+print(graph_data(HOUSING_PATH))
+
