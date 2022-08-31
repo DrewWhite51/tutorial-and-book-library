@@ -62,5 +62,4 @@ def k_nearest_classification():
     print("Test set score: {:.2f}".format(knn.score(X_test, y_test)))
 
 
-
 k_nearest_classification()
